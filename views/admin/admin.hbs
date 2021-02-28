@@ -1,0 +1,57 @@
+<section class="mt-5">
+    <div class="container">
+        <div class="row mt-4">
+            <a href="/admin/add-user" class="btn btn-success ml-auto w-100 mb-5">Add User</a>
+        </div>
+        <table class="table table-striped table-bordered css-serial" id="users-Table">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Job</th>
+                    <th scope="col">Option1</th>
+                    <th scope="col">Option2</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td></td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Username}}</td>
+                    <td>{{this.Email}}</td>
+                    <td>{{this.Job}}</td>
+                    <td><a href="/admin/edit-user/{{this._id}}" class="btn btn-primary">Edit</a></td>
+                    <td><a href="/admin/delete-user/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you want to delete {{this.Name}}')">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<script>
+        $(document).ready(function() {
+            $('#users-Table').DataTable();
+        });
+</script>
+
+<style>
+    body {
+        background-color: #4a80a180;
+        }
+
+    .css-serial {
+        counter-reset: serial-number;
+        }
+
+    .css-serial td:first-child:before {
+    counter-increment: serial-number;
+    content: counter(serial-number);
+    }
+</style>
+
+

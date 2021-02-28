@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-6 m-auto">
+        <div class="container" style="padding-top: 10%;"></div>
+            <h2 class="text-center mb-3">Create New Account</h2>
+            <form action="/signup" id="user-signup" method="post">
+                <div class="form-group">
+                    <label>Enter name</label>
+                    <input type="text" class="form-control" name="Name" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Enter username</label>
+                    <input type="text" class="form-control" name="Username" id="username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Enter email</label>
+                    <input type="email" class="form-control" name="Email" id="email" placeholder="Enter email address">
+                    {{#if emailExist}}
+                    <p style="color: red;">Email already exist</p>
+                    {{/if}}
+                </div>
+                <div class="form-group">
+                    <label>Enter Job position</label>
+                    <input type="text" class="form-control" name="Job" id="job" placeholder="Enter your job position">
+                </div>
+                <div class="form-group">
+                    <label>Enter password</label>
+                    <input type="password" class="form-control" name="Password" id="password" placeholder="Enter password">
+                </div>
+                <a href="/login">Already have an account ?</a>
+                <button type="submit" class="btn btn-primary float-right">Signup</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(()=>{
+$("#user-signup").validate({
+    rules:{
+        Name:{
+            required:true,
+            minlength:3
+        },
+        Username:{
+            required:true,
+            minlength:3
+        },
+        Email:{
+            required: true,
+            email: true
+        },
+        Job:{
+            required: true
+        },
+        Password:{
+            required: true,
+            minlength:5
+        }
+    }
+});
+});
+</script>
+
+<style>
+    body {
+        background-color: #2c8b84ef;
+    }
+</style>
