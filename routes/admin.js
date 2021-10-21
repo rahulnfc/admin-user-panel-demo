@@ -43,7 +43,7 @@ router.post('/login', (req, res) => {
   if (admin.email != req.body.Email) {
     req.session.adminemailErr = true
     res.redirect('/admin/login');
-    req.session.adminemailErr = false
+    req.session.adminemailErr = false 
   }
   else if (admin.password != req.body.Password) {
     req.session.adminpassErr = true
@@ -103,5 +103,4 @@ router.post('/edit-user/:id', (req, res) => {
   })
 
 });
-
 module.exports = router;
